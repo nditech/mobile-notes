@@ -50,7 +50,7 @@ This app does the following:
 
 ## Demo
 
-- [Working app on S3](http://test-mobile-note-website-s3.s3-website-us-east-1.amazonaws.com/)
+- [Working app in S3 bucket](http://test-mobile-note-website-s3.s3-website-us-east-1.amazonaws.com/)
 
 ## Installation
 
