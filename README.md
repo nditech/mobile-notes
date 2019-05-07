@@ -1,8 +1,38 @@
-# Mobile Notes 
+<h1 align="center">
+  <a href="https://www.ndi.org/"><img src="https://www.ndi.org/sites/all/themes/ndi/images/NDI_logo_svg.svg" alt="NDI Logo" width="200"></a>
+</h1>
+
+<h1 align="center">
+  Serverless App Example - Mobile Notes
+</h1>
+
+<p align="center">
+  <a href="./LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-red.svg" alt="License"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="#documentation">Documentation</a> - 
+  <a href="#license">License</a> - 
+  <a href="#authors">Author(s)</a>
+</p>
+
+## Documentation
 
 An example of a serverless app built with React, Node.js and AWS.
 
-## Documentation
+### Table of Contents
+
+1. [Intro](#intro)
+1. [Demo](#demo)
+1. [Installation](#installation)
+1. [Test](#test)
+1. [Diagnosis](#diagnosis)
+1. [Contribution](#contribution)
+1. [Improvement](#improvement)
+
+## Intro
 
 This app does the following:
 
@@ -10,19 +40,17 @@ This app does the following:
 - Use AWS Lambda with API Gateway which is secured by Cognito User Pool authorizer.
 - Follow best practices, architectural guidance, and considerations for using managed services on the AWS Cloud to simplify development of RESTful backend services.
 
-This app is a combination of the back-end code from AWS Blog [AWS Mobile App Backend with Hybrid Apps](https://aws.amazon.com/blogs/mobile/aws-mobile-app-backend-with-hybrid-apps/) ([pdf link](https://s3.amazonaws.com/solutions-reference/mobile-backend/latest/mobile-app-backend.pdf)) and the front-end code from the website [serverless-stack.com](https://serverless-stack.com/) with some [differences](#differences).
-
-*Why I use other people's code? To quickly prove a concept, I don't need to reinvent the wheel. The goal of this app is to learn how to successfully build a secure serverless app following AWS best practices.*
-
-> Many thanks to the Solution Architects from Amazon: Sean Senior and Leo Drakopoulos who wrote the super helpful blog and the awesome people who founded Serverless-Stack.com: [Frank Wang](https://github.com/fwang) and [Jay V](https://github.com/jayair).
-
-## App logic
+### App logic
 
 1. An Amazon Cognito User Pool authorizer is associated with a RESTful API hosted in Amazon API Gateway. The authorizer authenticates **every** API call made from a mobile app by leveraging a JSON Web Token (JWT) passed in the API call headers. 
 1. Amazon API Gateway is natively integrated with Amazon Cognito User Pools so the validation of the JWT requires no additional effort from the application developer. Amazon API Gateway then invokes an AWS Lambda function that accesses other AWS services, which in this case is Amazon DynamoDB. 
 1. When AWS Lambda is invoked, it assumes an AWS Identity and Access Management (IAM) role. The IAM role determines the level of access that AWS Lambda has to Amazon DynamoDB. 
 
 <div><img src="./docs/app-diagram.png" alt="App diagram"/></div>
+
+## Demo
+
+
 
 ## Installation
 
@@ -77,8 +105,19 @@ This app is a combination of the back-end code from AWS Blog [AWS Mobile App Bac
     }
     ```
 
-## Differences 
-from [AWS Blog](https://aws.amazon.com/blogs/mobile/aws-mobile-app-backend-with-hybrid-apps/) and Serverless-Stack.com
+## Diagnosis
+
+*Currently there is no issue.*
+
+## Contribution
+
+* Please read our [Code Commits Guide](https://github.com/nditech/git-styleguide) and [Documentation Guide](https://github.com/nditech/standardized-README).
+* We also follow Google's [Javascript Style Guide](https://google.github.io/styleguide/jsguide.html) and Airbnb's [React Style Guide](https://github.com/airbnb/javascript/tree/master/react).
+* Do your own unit test before committing code.
+
+## Improvement
+ 
+The differences between the code in this repository and the ones from [AWS Blog](https://aws.amazon.com/blogs/mobile/aws-mobile-app-backend-with-hybrid-apps/) and Serverless-Stack.com
 
 - The front-end code ([Ionic framework](https://ionicframework.com/)) from Amazon Blog is outdated. Since 2016 when the blog was written, Ionic has changed the folder structure amongst other things so I wasn't able to make the code from Amazon work with the current Ionic framework.
 - At the time of this documentation (April 2019), Ionic has released a beta version for React. However, it seems more complicated than it should be and I'm more familiar with React than Angular (which is originally supported by Inonic) so I decided to use the front-end code from Serverless-Stack.com. If you want to develop your own mobile app, consider using [React Native](https://facebook.github.io/react-native/).
@@ -97,10 +136,21 @@ from [AWS Blog](https://aws.amazon.com/blogs/mobile/aws-mobile-app-backend-with-
     ```
 - There's a lot more from Serverless-Stack.com like Automating Serverless deployments and Code Splitting in Create React App, you should definitely check it out.
 
+## License
+
+[MIT](./LICENSE)
+
 ## Author(s)
 
 - <b>Viet Nguyen</b>:
     vnguyen@ndi.org &nbsp;&middot;&nbsp;
     [LinkedIn](https://www.linkedin.com/in/nguyendviet)
+
+    This app is a combination of the back-end code from AWS Blog [AWS Mobile App Backend with Hybrid Apps](https://aws.amazon.com/blogs/mobile/aws-mobile-app-backend-with-hybrid-apps/) ([pdf link](https://s3.amazonaws.com/solutions-reference/mobile-backend/latest/mobile-app-backend.pdf)) and the front-end code from the website [serverless-stack.com](https://serverless-stack.com/) with some differences mentioned [above](#improvement).
+
+    *Why I use other people's code? To quickly prove a concept, I don't need to reinvent the wheel. The goal of this app is to learn how to successfully build a secure serverless app following AWS best practices.*
+
+    > Many thanks to the Solution Architects from Amazon: Sean Senior and Leo Drakopoulos who wrote the super helpful blog and the awesome people who founded Serverless-Stack.com: [Frank Wang](https://github.com/fwang) and [Jay V](https://github.com/jayair).
+
 
 **[⬆ back to top](#documentation)**
