@@ -50,13 +50,13 @@ This app does the following:
 
 ## Demo
 
-
+- [Working app on S3](http://test-mobile-note-website-s3.s3-website-us-east-1.amazonaws.com/)
 
 ## Installation
 
 1. Clone this repository (with SSH):
     ```
-    $ git clone git@github.com:nguyendviet/mobile-notes.git
+    $ git clone git@github.com:nditech/mobile-notes.git
     $ cd mobile-notes
     ```
 1. [Create and deploy Lambda, API Gateway and DynamoDB with execution roles](https://s3.amazonaws.com/solutions-reference/mobile-backend/latest/mobile-app-backend.pdf). The Lambda code is in this repository: `./lambda/`.
