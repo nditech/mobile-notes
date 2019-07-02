@@ -135,6 +135,7 @@ The differences between the code in this repository and the ones from [AWS Blog]
     });
     ```
 - There's a lot more from Serverless-Stack.com like Automating Serverless deployments and Code Splitting in Create React App, you should definitely check it out.
+- In the (near) future, I'm going to  use AWS CloudFormation (and perhaps Terraform) to provision the infrastructure instead of the tools that Serverless-Stack.com uses.
 
 ## License
 
@@ -142,9 +143,7 @@ The differences between the code in this repository and the ones from [AWS Blog]
 
 ## Author(s)
 
-- <b>Viet Nguyen</b>:
-    vnguyen@ndi.org &nbsp;&middot;&nbsp;
-    [LinkedIn](https://www.linkedin.com/in/nguyendviet)
+- <b>Viet Nguyen</b>: [LinkedIn](https://www.linkedin.com/in/nguyendviet)
 
     This app is a combination of the back-end code from AWS Blog [AWS Mobile App Backend with Hybrid Apps](https://aws.amazon.com/blogs/mobile/aws-mobile-app-backend-with-hybrid-apps/) ([pdf link](https://s3.amazonaws.com/solutions-reference/mobile-backend/latest/mobile-app-backend.pdf)) and the front-end code from the website [serverless-stack.com](https://serverless-stack.com/) with some differences mentioned [above](#improvement).
 

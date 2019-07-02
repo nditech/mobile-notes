@@ -1,0 +1,44 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "This template uses nested stacks to provision the notes app.",
+    
+    "Resources": {
+        "S3WebsiteReactStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "Parameters": {
+                    "BucketName": {
+                        "Fn::Sub": "${AWS::StackName}-website"
+                    }
+                },
+                "TemplateURL": "https://s3.amazonaws.com/ndi-tech-cloudformation-templates/s3-static-website-react.json"
+            }
+        },
+        "S3UploadBucket": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "Parameters": {
+                    "BucketName": {
+                        "Fn::Sub": "${AWS::StackName}-upload"
+                    }
+                },
+                "TemplateURL": "https://s3.amazonaws.com/ndi-tech-cloudformation-templates/s3-with-cors.json"
+            }
+        },
+        "DynamoDBTableStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "Parameters": {
+                    "TableName": {
+                        "Fn::Sub": "${AWS::StackName}-table"
+                    }
+                },
+                "TemplateURL": "https://s3.amazonaws.com/ndi-tech-cloudformation-templates/dynamodb-table.json"
+            }
+        }
+    },
+
+    "Outputs": {
+
+    }
+}
