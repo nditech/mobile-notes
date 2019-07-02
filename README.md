@@ -109,10 +109,6 @@ This app does the following:
     }
     ```
 
-## Diagnosis
-
-*Currently there is no issue.*
-
 ## Contribution
 
 * Please read our [Code Commits Guide](https://github.com/nditech/git-styleguide) and [Documentation Guide](https://github.com/nditech/standardized-README).
