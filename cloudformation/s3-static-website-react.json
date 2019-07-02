@@ -1,12 +1,22 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description" : "This template creates a bucket as a website. The AccessControl property is set to the canned ACL PublicRead (public read permissions are required for buckets set up for website hosting).",
+    "Description": "This template creates a bucket as a website. The AccessControl property is set to the canned ACL PublicRead (public read permissions are required for buckets set up for website hosting).",
+    "Parameters" : {
+        "BucketName" : {
+            "Description": "Name of the S3 bucket as a parameter passed into this template.",
+            "Type": "String",
+            "MinLength" : 1,
+            "MaxLength" : 255,
+            "AllowedPattern" : "^[a-zA-Z][-a-zA-Z0-9]*$"
+        }
+    },
     "Resources": {
         "S3Bucket": {
+            "Description": "This bucket use index.html for both index and error page for React app.",
             "Type": "AWS::S3::Bucket",
             "Properties": {
                 "BucketName": {
-                    "Fn::Sub": "${AWS::StackName}-s3"
+                    "Ref": "BucketName"
                 },
                 "AccessControl": "PublicRead",
                 "WebsiteConfiguration": {
@@ -18,6 +28,9 @@
         "BucketPolicy": {
             "Type": "AWS::S3::BucketPolicy",
             "Properties": {
+                "Bucket": {
+                    "Ref": "S3Bucket"
+                },
                 "PolicyDocument": {
                     "Id": "MyPolicy",
                     "Version": "2012-10-17",
@@ -41,9 +54,6 @@
                             }
                         }
                     ]
-                },
-                "Bucket": {
-                    "Ref": "S3Bucket"
                 }
             }
         }
@@ -56,7 +66,7 @@
                     "WebsiteURL"
                 ]
             },
-            "Description": "URL for website hosted on S3"
+            "Description": "URL for website hosted on S3."
         },
         "S3BucketSecureURL": {
             "Value": {
@@ -73,19 +83,11 @@
                     ]
                 ]
             },
-            "Description": "Name of S3 bucket to hold website content"
+            "Description": "Name of S3 bucket to hold website content."
         },
-        "S3BucketARN": {
+        "BucketName": {
             "Value": {
-                "Fn::GetAtt": [
-                    "S3Bucket",
-                    "Arn"
-                ]
-            },
-            "Export": {
-                "Name": {
-                    "Fn::Sub": "${AWS::StackName}-s3-arn"
-                }
+                "Ref": "BucketName"   
             }
         }
     }

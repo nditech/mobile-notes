@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "API Gateway, Lambda, and Dynamo.",
+    "Description": "API Gateway, Lambda, and Dynamo. Source: https://github.com/markhopson/cloudformation-serverless-api",
     "Resources": {
         "BaseLambdaExecutionPolicy": {
             "Type": "AWS::IAM::ManagedPolicy",
@@ -210,7 +210,7 @@
                     ]
                 },
                 "Handler": "index.handleHttpRequest",
-                "Runtime": "nodejs6.10",
+                "Runtime": "nodejs8.10",
                 "Environment": {
                     "Variables": {
                         "HELLO_DB": {

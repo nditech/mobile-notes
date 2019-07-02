@@ -1,11 +1,24 @@
 {
     "AWSTemplateFormatVersion" : "2010-09-09",
-    "Description" : "This template: - Sets up Application Auto Scaling for a AWS::DynamoDB::Table resource. The template defines a TargetTrackingScaling scaling policy that scales up the WriteCapacityUnits throughput for the table. - Exports the table ARN.",
+    "Description" : "This template: - Sets up Application Auto Scaling for a AWS::DynamoDB::Table resource. - Defines a TargetTrackingScaling scaling policy that scales up the WriteCapacityUnits throughput for the table. Version: 1.0.1",
+    
+    "Parameters" : {
+        "TableName" : {
+            "Description": "Name of the DynamoDB table as a parameter passed into this template.",
+            "Type": "String",
+            "MinLength" : 1,
+            "MaxLength" : 255,
+            "AllowedPattern" : "^[a-zA-Z][-a-zA-Z0-9]*$"
+        }
+    },
 
     "Resources": {
         "DDBTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
+                "TableName": {
+                    "Ref": "TableName"
+                },
                 "AttributeDefinitions": [
                     {
                         "AttributeName": "userid",
@@ -113,17 +126,32 @@
         }
     },
     "Outputs": {
-        "DynamoDBProperties": {
+        "DDBTableARN": {
             "Value": {
                 "Fn::GetAtt": [
                     "DDBTable",
-                    "Properties"
+                    "Arn"
                 ]
             },
             "Export": {
                 "Name": {
-                    "Fn::GetAtt": ["DDBTable", "TableName"]
+                    "Fn::Sub": "${AWS::StackName}-DDBTableARN"
                 }
+            }
+        },
+        "DDBTableName": {
+            "Value": {
+                "Ref": "TableName"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-DDBTableName"
+                }
+            }
+        },
+        "DDBStackName": {
+            "Value": {
+                "Fn::Sub": "${AWS::StackName}"
             }
         }
     }

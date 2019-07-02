@@ -1,12 +1,20 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Template creates AWS Cognito UserPool.",
+    "Description": "This template creates AWS Cognito UserPool and UserPoolClient. Version: 1.0.2",
+ 
+    "Parameters" : {
+        "CognitoUserPoolName": {
+            "Description": "Name of the Cognito user pool as a parameter passed into this template.",
+            "Type": "String"
+        }
+    },
+
     "Resources": {
         "UserPool": {
             "Type": "AWS::Cognito::UserPool",
             "Properties": {
                 "UserPoolName" : {
-                    "Fn::Sub": "${AWS::StackName}-cognito-userpool"
+                    "Ref": "CognitoUserPoolName"
                 },
                 "Policies": {
                     "PasswordPolicy": {
@@ -65,9 +73,10 @@
         "UserPoolClient": {
             "Type": "AWS::Cognito::UserPoolClient",
             "Description": "App Client.",
+            "DependsOn": "UserPool",
             "Properties": {
                 "ClientName": {
-                    "Fn::Sub": "${AWS::StackName}-cognito-userpool-client"
+                    "Fn::Sub": "${CognitoUserPoolName}Client"
                 },
                 "ExplicitAuthFlows": [
                     "ADMIN_NO_SRP_AUTH"
@@ -80,18 +89,28 @@
             }
         }
     },
+
     "Outputs": {
-        "UserPoolARN": {
+        "UserPoolArn": {
+            "Value": {
+                "Fn::GetAtt" : [ "UserPool", "Arn" ]
+            }
+        },
+        "UserPoolId": {
+            "Value": { "Ref" : "UserPool" }
+        },
+        "AppClientId": {
+            "Value": { "Ref" : "UserPoolClient" }
+        },
+        "UserPoolName": {
+            "Value": { "Ref" : "CognitoUserPoolName" }
+        },
+        "ProviderName": {
             "Value": {
                 "Fn::GetAtt": [
                     "UserPool",
-                    "Arn"
+                    "ProviderName"
                 ]
-            },
-            "Export": {
-                "Name": {
-                    "Fn::Sub": "${AWS::StackName}-cognito-userpool-arn"
-                }
             }
         }
     }

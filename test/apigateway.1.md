@@ -1,2 +1,0 @@
-- Created stack successfully.
-- Test GET and POST successfully.

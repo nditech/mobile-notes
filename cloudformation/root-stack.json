@@ -11,7 +11,7 @@
                         "Fn::Sub": "${AWS::StackName}"
                     }
                 },
-                "TemplateURL": "https://s3.amazonaws.com/ndi-tech-cloudformation-templates/dynamodb.json"
+                "TemplateURL": "https://s3.amazonaws.com/YOUR_TEMPLATE_BUCKET/dynamodb.json"
             }
         },
         "S3WebsiteReact": {
@@ -22,7 +22,7 @@
                         "Fn::Sub": "${AWS::StackName}-website"
                     }
                 },
-                "TemplateURL": "https://s3.amazonaws.com/ndi-tech-cloudformation-templates/s3-static-website-react.json"
+                "TemplateURL": "https://s3.amazonaws.com/YOUR_TEMPLATE_BUCKET/s3-static-website-react.json"
             }
         },
         "S3UploadBucket": {
@@ -33,7 +33,7 @@
                         "Fn::Sub": "${AWS::StackName}-upload"
                     }
                 },
-                "TemplateURL": "https://s3.amazonaws.com/ndi-tech-cloudformation-templates/s3-with-cors.json"
+                "TemplateURL": "https://s3.amazonaws.com/YOUR_TEMPLATE_BUCKET/s3-with-cors.json"
             }
         },
         "Cognito": {
@@ -51,7 +51,7 @@
                         ]
                     }
                 },
-                "TemplateURL": "https://s3.amazonaws.com/ndi-tech-cloudformation-templates/cognito.json"
+                "TemplateURL": "https://s3.amazonaws.com/YOUR_TEMPLATE_BUCKET/cognito.json"
             }
         },
         "ApiGateway": {
@@ -69,7 +69,7 @@
                         "Fn::GetAtt": [ "DynamoDBTable", "Outputs.DDBStackName" ]
                     }
                 },
-                "TemplateURL": "https://s3.amazonaws.com/ndi-tech-cloudformation-templates/api-gateway.json"
+                "TemplateURL": "https://s3.amazonaws.com/YOUR_TEMPLATE_BUCKET/api-gateway.json"
             }
         },
         "IdentityPool": {
@@ -94,7 +94,7 @@
                         "Fn::GetAtt": [ "ApiGateway", "Outputs.ApiGatewayId" ]
                     }
                 },
-                "TemplateURL": "https://s3.amazonaws.com/ndi-tech-cloudformation-templates/identity-pool.json"
+                "TemplateURL": "https://s3.amazonaws.com/YOUR_TEMPLATE_BUCKET/identity-pool.json"
             }
         }
     },

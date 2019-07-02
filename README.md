@@ -71,6 +71,10 @@ This app does the following:
     ```
 1. You should see the main page of the app that looks like the one on Serverless-Stack.com.
 
+## Debug
+
+- `gyp`, `node-gyp` and `node-pre-gyp` error => [Solution](./docs/err/grpc.md).
+
 ## Test
 
 - Since I use the front-end code from Serverless-Stack.com, I don't test it, but you should test your front-end code using frameworks like [nightmare](https://www.npmjs.com/package/nightmare).
@@ -135,7 +139,7 @@ The differences between the code in this repository and the ones from [AWS Blog]
     });
     ```
 - There's a lot more from Serverless-Stack.com like Automating Serverless deployments and Code Splitting in Create React App, you should definitely check it out.
-- In the (near) future, I'm going to  use AWS CloudFormation (and perhaps Terraform) to provision the infrastructure instead of the tools that Serverless-Stack.com uses.
+- In the (near) future, I'm going to  use AWS CloudFormation (and perhaps Terraform) to provision the infrastructure instead of the tools that Serverless-Stack.com uses. *Update 28 June 2019*: So, the future is now. See how to provision the whole app with CloudFormation [here](./cloudformation/README.md).
 
 ## License
 
